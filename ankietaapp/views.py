@@ -17,23 +17,23 @@ def survey(request):
                 g.save()
                 setattr(DbAnswer, str_b, g.id)
                 DbAnswer.save()
-            return render(request, 'rhApp/dziekuje.html', {'form1': form1 })
+            return render(request, 'ankietaapp/dziekuje.html', {'form1': form1 })
 
     elif request.method == 'GET':
         form1 = rhSurvey1()
-        return render(request, 'rhApp/ankieta.html', {'form1': form1 })
+        return render(request, 'ankietaapp/ankieta.html', {'form1': form1 })
 
 
 def excludeCSRF(dict, csrft):
     return {k:v for k,v in dict if k not in csfrt}
 
 def indexpage(request):
-    return render(request, 'rhApp/index.html')
+    return render(request, 'ankietaapp/index.html')
 
 def resultsOfSurvey(request):
     choicelist = ChoiceM.objects.all()
     questionlist = QuestionM.objects.all()
     c_list = list(choicelist)
     q_list = list(questionlist)
-return render(request, 'rhApp/wyniki.html', {'c_list': c_list, 'q_list': q_list})from django.shortcuts import render
+return render(request, 'ankietaapp/wyniki.html', {'c_list': c_list, 'q_list': q_list})from django.shortcuts import render
 
